@@ -20,6 +20,23 @@ export const Login = ({navigation}) => {
   }
 
   async function login() {
+
+    let emptyField = []
+
+    if (form.email === '') {
+      emptyField.push('Email')
+    }
+
+    if (form.password === '') {
+      emptyField.push('Password')
+    }
+
+    if (emptyField.length > 0) {
+      setErrMsg(emptyField.toString() + ' cannot be empty.')
+      return
+    }
+
+
     setErrMsg('')
     const result = await fetch(API_URL + '/user/login', {
       method: 'POST',
