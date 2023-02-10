@@ -1,21 +1,8 @@
 import { useState } from 'react';
 import { TouchableOpacity, Text, View, StyleSheet, TextInput } from 'react-native';
 import { API_URL } from "@env"
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Login = ({navigation}) => {
-
-  // getData()
-  // const getData = async () => {
-  //   try {
-  //     const token = await AsyncStorage.getItem('jwt')
-  //     if(token !== null) {
-  //       console.log(token)
-  //     }
-  //   } catch(e) {
-  //     console.log(e)
-  //   }
-  // }
 
   const [form, setForm] = useState({
     email: '',
@@ -47,7 +34,6 @@ export const Login = ({navigation}) => {
     });
     const response = await result.json()
     if (result.ok) {
-      // await AsyncStorage.setItem('jwt', response.token)
       navigation.navigate('SearchName', { token: response.token })
     } else {
       if (response.err && result.status === 400) {
